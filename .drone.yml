@@ -1,0 +1,17 @@
+kind: pipeline
+name: default
+
+global-variables:
+  environment: &default_environment
+    LC_ALL: C
+    PYL_BUILD_DIR: /code
+
+workspace:
+  base: /code
+
+clone:
+  depth: 1
+
+steps:
+  - name: lint
+    image:
