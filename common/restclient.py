@@ -12,19 +12,19 @@ class RestClient():
      to be updated
     """
 
-    def __init__(self, uri, headers=None, verify=None):
+    def __init__(self, url, headers=None, verify=None):
         """
 
-        :param uri:
+        :param url:
         :param headers:
         :param verify:
         :param kwargs:
         """
-        self.uri = uri
+        self.url = url
         self.headers = headers
         self.verify = verify
 
-    def get(self, endpoint, json=None, data=None, headers=None):
+    def get(self, json=None, data=None, headers=None):
         """
 
         :param endpoint:
@@ -40,13 +40,13 @@ class RestClient():
 
         if headers:
             headers=self.headers
-        url = self.uri + endpoint
 
-        requests_obj = requests.request("GET", url, json=json,data=data, verify=self.verify,
+
+        requests_obj = requests.request("GET", self.url, json=json,data=data, verify=self.verify,
                                             timeout=30)
         return requests_obj
 
-    def post(self, endpoint, json=None, data=None, headers=None):
+    def post(self, json=None, data=None, headers=None):
         """
 
         :param endpoint:
@@ -62,8 +62,7 @@ class RestClient():
 
         if headers:
             headers = self.headers
-        url = self.uri + endpoint
 
-        requests_obj = requests.request("POST", url, json=json, data=data, verify=self.verify,
+        requests_obj = requests.request("POST", self.url, json=json, data=data, verify=self.verify,
                                             timeout=30)
         return requests_obj
