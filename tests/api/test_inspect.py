@@ -1,7 +1,11 @@
 """
 to be updated
 """
+import logging
+
 from api.inspect import InspectAPI
+
+LOGGER = logging.getLogger(__name__)
 
 
 def test_inspect(test_info, host_name, project_id, api_key):
@@ -13,9 +17,9 @@ def test_inspect(test_info, host_name, project_id, api_key):
     :param api_key:
     :return:
     """
+    LOGGER.debug(test_info)
+    LOGGER.info("test execution stated:::: %s", test_info["test_case_id"])
     inspect_api = InspectAPI(host_name, project_id, api_key)
-    inspect_api.inspect_text_content("Credit Card Type Credit Card Number American Express 3714-2963-5398-431 Diners "
-                                     "Club 3056-9309-224904 Discover 6011-1111-1115-1117 JCB 3530111633300000 "
-                                     "MasterCard 5555555565554444 Visa 4111111121111111")
-    print(test_info)
+    inspect_api.inspect_text_content(test_info["test_input_params"]["text"])
+    assert inspect_api.validate_findings_count(test_info["expected_output"]["total_findings_count"])
     assert True

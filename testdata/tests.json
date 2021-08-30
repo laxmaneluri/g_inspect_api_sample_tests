@@ -1,0 +1,22 @@
+{
+  "tests": [
+    {
+      "test_case_id": "VALID_CREDIT_CARD_NUMBER",
+      "test_description": "Valid credit card information",
+      "test_input_params": {
+        "text": "Credit Card Type Credit Card Number American Express 371449635398431 Diners Club 30569309025904 Discover 6011111111111117 JCB 3530111333300000 MasterCard 5555555555554444 Visa 4111111111111111\t",
+        "info_type_filter": null,
+        "minLikelihood_filter": null,
+        "maxFindingsPerItem": null,
+        "maxFindingsPerRequest": null
+      },
+      "expected_output": {
+        "total_findings_count": 8,
+        "findings": {
+          "credit_card" : 2,
+          "account_num": 5
+        }
+      }
+    }
+  ]
+}

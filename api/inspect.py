@@ -16,7 +16,7 @@ class InspectAPI(RestClient):
     """
     To be updated
     """
-    response = None
+    response_json = None
     json_object = {}
 
     def __init__(self, hostname, project_id, api_key):
@@ -31,9 +31,11 @@ class InspectAPI(RestClient):
         :param config_obj: config_object
         :return:
         """
+        self.response_json = {}
         json_body = self.get_json_body(text, config_obj)
-        self.response = self.post(json_body)
-        LOGGER.debug(self.response)
+        response = self.post(json_body)
+        self.response_json = response.json()
+        LOGGER.debug(self.response_json)
 
     def get_json_body(self, text, config_obj):
         """
@@ -55,3 +57,6 @@ class InspectAPI(RestClient):
             self.json_object.update(config_obj)
         LOGGER.debug("json_body:::%s", self.json_object)
         return self.json_object
+
+    def validate_findings_count(self, count):
+        return len(self.response_json["result"]["findings"]) == count

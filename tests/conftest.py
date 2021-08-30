@@ -1,35 +1,20 @@
 """
 To be updated
 """
+import json
 import logging
 import os
 
-import pytest
-import sys
 from os.path import dirname as d
-from os.path import abspath, join
+from os.path import abspath
+import sys
+import pytest
 
 LOGGER = logging.getLogger(__name__)
 logging.basicConfig(level=os.environ.get("LOGLEVEL", "DEBUG"))
 root_dir = d(d(abspath(__file__)))
 LOGGER.debug("****** >>>>>>%s", root_dir)
 sys.path.append(root_dir)
-
-tests = [
-    {
-        'a': 1
-    },
-    {
-        'b': 2
-    },
-    {
-        'c': 3
-    },
-    {
-        'd': 4
-    },
-]
-
 
 @pytest.fixture
 def host_name(variables):
@@ -70,4 +55,11 @@ def pytest_generate_tests(metafunc):
     :param metafunc: test function
     :return:
     """
-    metafunc.parametrize("test_info", tests)
+    if metafunc.config.getoption("--test_json"):
+
+        file_path = os.path.abspath(metafunc.config.getoption("--test_json"))
+        LOGGER.debug("test cases file path:::: %s", file_path)
+
+        with open(file_path) as json_file:
+            tests = json.load(json_file)["tests"]
+            metafunc.parametrize("test_info", tests)
