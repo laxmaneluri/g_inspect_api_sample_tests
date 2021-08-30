@@ -14,38 +14,48 @@
 
 <!-- ABOUT THE PROJECT -->
 ## Introduction
-to be updated
-### Built With
- to be updated
-* []()
-* []()
-* []()
-
+this is a sample framework designed and developed for Introspection API testing
+test case document [link](#testplan.md)
 
 
 <!-- GETTING STARTED -->
 ## Getting Started
-
-to be updated
+* checkout the latest framework
+* update API_KEY in config file config/prod_env.json
 
 ### Prerequisites
+* python > 3.8
+* pytest
 
-to be updated
 ### Installation
 
-to be updated
+installing python libraries
 
+```commandline 
+pip install -r requirements.txt
+```
 
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
+To execute the tests 
+```commandline
+pytest
+```
 
 
 <!-- ROADMAP -->
 ## Roadmap
-
-
+Following features need to be implemented
+* pending validations:
+  * number of findings by info type
+  * severity of findings
+* pending test inputs
+  * InspectConfig
+* dockerfile update
+* drone yml file update
+* test generation using microsoft pict tool
 
 <!-- CONTRIBUTING -->
 ## Contributing
