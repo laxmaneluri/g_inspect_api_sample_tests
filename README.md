@@ -15,7 +15,8 @@
 <!-- ABOUT THE PROJECT -->
 ## Introduction
 this is a sample framework designed and developed for Introspection API testing
-test case document [link](#testplan.md)
+<br>
+test case document [link](testplan.md)
 
 
 <!-- GETTING STARTED -->
