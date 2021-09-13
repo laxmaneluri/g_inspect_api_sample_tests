@@ -17,6 +17,24 @@
           "account_num": 5
         }
       }
+    },
+    {
+      "test_case_id": "INVALID_CREDIT_CARD_NUMBER",
+      "test_description": "inValid credit card information",
+      "test_input_params": {
+        "text": "Credit Card Type Credit Card Number American Express 61237192379123 Diners Club 12341341234 Discover 352345 JCB 3530111333300000 MasterCard 24523 Visa 4111111111111111\t",
+        "info_type_filter": null,
+        "minLikelihood_filter": null,
+        "maxFindingsPerItem": null,
+        "maxFindingsPerRequest": null
+      },
+      "expected_output": {
+        "total_findings_count": 0,
+        "findings": {
+          "credit_card" : 0,
+          "account_num": 0
+        }
+      }
     }
   ]
 }
